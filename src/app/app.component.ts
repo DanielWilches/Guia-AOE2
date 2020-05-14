@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { IconServiceService } from './services/icon-service.service';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor( public iconS: IconServiceService ){}
   title = 'GuiaAoE2';
 }
