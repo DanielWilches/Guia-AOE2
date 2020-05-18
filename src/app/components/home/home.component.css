@@ -1,0 +1,12 @@
+.social--media {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.select {
+    width: 25%;
+}
+.text {
+    padding: 3px;
+    margin: 0px !important;
+}

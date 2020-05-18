@@ -1,0 +1,13 @@
+.container-fluid {
+    min-height: 100vh;
+}
+.centro {
+    min-height: 120%;
+}
+.col {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.footer {
+    margin: 0;
+}

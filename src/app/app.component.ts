@@ -8,6 +8,9 @@ import { IconServiceService } from './services/icon-service.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor( public iconS: IconServiceService ){}
+  constructor( public iconS: IconServiceService, ){
+
+
+  }
   title = 'GuiaAoE2';
 }

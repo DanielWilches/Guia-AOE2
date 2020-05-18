@@ -1,0 +1,175 @@
+<!-- Cartas de unidades -->
+<div [ngSwitch]="id">
+  <!-- cartas de civilizaciones -->
+  <ng-template [ngSwitchCase]="'civilizations'">
+    <section  class="mt-5 row row-cols-1 row-cols-md-2">
+      <div class="col mb-4 animate__animated animate__fadeInDown" *ngFor="let item of items">
+        <div class="card bg-dark">
+          <header class="card-header border-0" >
+            <h3 class="card-title text-light">{{ item.name | capatilizacion }}</h3>
+            <h5 class="card-subtitle mb-2 text-muted">{{ item.expansion }}</h5>
+          </header>
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <p class="text-light">{{ "type army" | capatilizacion }}</p>
+              </div>
+              <div class="col">
+                <p class="text-light">{{ item.army_type }}</p>
+              </div>
+              <div class="w-100"></div>
+              <div class="col">
+                <p class="text-light">{{ "team bonus" | capatilizacion }}</p>
+              </div>
+              <div class="col">
+                <p class="text-light">{{ item.team_bonus | textSize }}</p>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer text-muted">
+            <button type="button" class="btn btn-outline-light btn-block">
+              {{ "more information here" | capatilizacion }}
+            </button>
+          </footer>
+        </div>
+      </div>
+    </section>
+  </ng-template>
+  <!-- cartas de unidades -->
+  <ng-template [ngSwitchCase]="'units'">
+    <section  class="mt-5 row row-cols-1 row-cols-md-2">
+      <div class="col mb-4 animate__animated animate__fadeInDown" *ngFor="let item of items">
+        <div class="card bg-dark">
+          <header class="card-header border-0" >
+            <h3 class="card-title text-light">{{ item.name | capatilizacion }}</h3>
+            <h5 class="card-subtitle mb-2 text-muted">{{ item.expansion }}</h5>
+          </header>
+          <div class="card-body">
+            <div class="row">
+
+              <div class="col">
+                <p class="text-light">{{ "age" | capatilizacion }}</p>
+              </div>
+              <div class="col-5" >
+                <p class="text-light">{{ item.age }}</p>
+              </div>
+
+              <div class="w-100"></div>
+            
+              <div class="col">
+                <p class="text-light">{{ "attack" | capatilizacion }}</p>
+              </div >
+
+              <div  class="col-5" >
+                <p class="text-light">{{ item.attack |armor }} Influenced damage</p>
+              </div>
+              <div class="w-100"></div>
+
+              <div class="col" >
+                <p class="text-light">{{ "armor" | capatilizacion  }}</p>
+              </div>
+              <div class="col-5" >
+                <p class="text-light">{{ item.armor}} Vital statistical value </p>
+              </div>
+
+            </div>
+          </div>
+          <footer class="card-footer text-muted">
+            <button type="button" class="btn btn-outline-light btn-block">
+              {{ "more information here" | capatilizacion }}
+            </button>
+          </footer>
+        </div>
+      </div>
+    </section>
+  </ng-template>
+  <!-- carta structures -->
+  <ng-template [ngSwitchCase]="'structures'">
+
+    <section  class="mt-5 row row-cols-1 row-cols-md-2">
+      <div class="col mb-4 animate__animated animate__fadeInDown" *ngFor="let item of items">
+        <div class="card bg-dark">
+          <header class="card-header border-0" >
+            <h3 class="card-title text-light">{{ item.name | capatilizacion }}</h3>
+            <h5 class="card-subtitle mb-2 text-muted">{{ item.expansion }}</h5>
+          </header>
+          <div class="card-body">
+            <div class="row">
+
+              <div class="col">
+                <p class="text-light">{{ "age" | capatilizacion }}</p>
+              </div>
+              <div class="col-5" >
+                <p class="text-light">{{ item.age }}</p>
+              </div>
+
+              <div class="w-100"></div>
+            
+              <div class="col">
+                <p class="text-light">{{ "hit points" | capatilizacion }}</p>
+              </div >
+              <div  class="col-5" >
+                <p class="text-light">{{ item.hit_points |armor }}</p>
+              </div>
+              <div class="w-100"></div>
+
+              <div class="col" >
+                <p class="text-light">{{ "armor" | capatilizacion  }}</p>
+              </div>
+              <div class="col-5" >
+                <p class="text-light">{{ item.armor}} Vital statistical value </p>
+              </div>
+
+            </div>
+          </div>
+          <footer class="card-footer text-muted">
+            <button type="button" class="btn btn-outline-light btn-block">
+              {{ "more information here" | capatilizacion }}
+            </button>
+          </footer>
+        </div>
+      </div>
+    </section>
+  </ng-template>
+  <!-- carta de techologies  -->
+  <ng-template [ngSwitchCase]="'technologies'">
+    <section  class="mt-5 row row-cols-1 row-cols-md-2">
+      <div class="col mb-4 animate__animated animate__fadeInDown" *ngFor="let item of items">
+        <div class="card bg-dark">
+          <header class="card-header border-0" >
+            <h3 class="card-title text-light">{{ item.name | capatilizacion }}</h3>
+            <h5 class="card-subtitle mb-2 text-muted">{{ item.expansion }}</h5>
+          </header>
+          <div class="card-body">
+            <div class="row">
+
+              <div class="col">
+                <p class="text-light">{{ "age" | capatilizacion }}</p>
+              </div>
+              <div class="col-5" >
+                <p class="text-light">{{ item.age }}</p>
+              </div>
+
+              <div class="w-100"></div>
+
+              <div class="col" >
+                <p class="text-light">{{ "description" | capatilizacion  }}</p>
+                <p class="text-light">{{ item.description}} Vital statistical value </p>
+              </div>
+
+            </div>
+          </div>
+          <footer class="card-footer text-muted">
+            <button type="button" class="btn btn-outline-light btn-block">
+              {{ "more information here" | capatilizacion }}
+            </button>
+          </footer>
+        </div>
+      </div>
+    </section>
+
+  </ng-template>
+
+  <ng-template ngSwitchDefault>
+  </ng-template>
+</div>

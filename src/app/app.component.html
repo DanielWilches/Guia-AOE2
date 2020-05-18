@@ -1,3 +1,18 @@
-<p class="text-danger animate__animated animate__slideInDown" >bootstrap activado</p>
-<h1 class="animate__animated animate__bounce">animaciones activadas</h1>
-<fa-icon [icon]="iconS.faCoffee"></fa-icon>
+<div  class="container-fluid" >
+  <header class="row align-items-start" >
+    <div class="col" >
+      <app-navbar></app-navbar>
+    </div>
+  </header>
+  <main class="row align-items-center" [ngStyle]="{'min-height.px':820}">
+    <div class="col" >
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+  <footer class="row align-items-end" >
+    <div class="col" >
+      <app-footer ></app-footer> 
+    </div>
+  </footer>
+</div>
+  
