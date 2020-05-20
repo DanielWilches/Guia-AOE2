@@ -10,6 +10,7 @@ import { ConexionService } from '../../services/conexion.service';
 export class TechnologiesComponent implements OnInit {
   arryTechnologies: any[] = [];
   technologies = 'technologies';
+  loading: boolean;
   constructor( private conexionS: ConexionService ) {
     this.getTechnologies();
    }
@@ -17,8 +18,10 @@ export class TechnologiesComponent implements OnInit {
   ngOnInit(): void {
   }
   getTechnologies() {
+    this.loading = true;
     this.conexionS.getTechnologies()
     .subscribe((resul) => {
+      this.loading = false;
       console.log(resul);
       return this.arryTechnologies = resul;
     }, (err) => {

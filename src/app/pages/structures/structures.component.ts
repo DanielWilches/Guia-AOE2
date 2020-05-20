@@ -10,6 +10,7 @@ import { ConexionService } from '../../services/conexion.service';
 export class StructuresComponent implements OnInit {
   arrayStructures: any[] = [];
   structures = 'structures';
+  loading: boolean;
   constructor( private conexionS: ConexionService ) {
     this.getStructures();
    }
@@ -18,8 +19,10 @@ export class StructuresComponent implements OnInit {
   }
 
   getStructures() {
+    this.loading = true;
     this.conexionS.getStructures()
     .subscribe((resul) => {
+      this.loading = false;
       console.log(resul);
       return this.arrayStructures = resul;
     }, (err) => {

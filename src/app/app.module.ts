@@ -1,12 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-
 // librerias externas
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
 // importaciones de nuestra aplicacion
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,32 +12,39 @@ import { AppComponent } from './app.component';
 // pipes
 import { CapatilizacionPipe } from './pipes/capatilizacion.pipe';
 import { TextSizePipe } from './pipes/text-size.pipe';
-// shared
+import { ArmorPipe } from './pipes/armor.pipe';
+//  componentes shared
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CardsComponent } from './components/cards/cards.component';
-// Comonentes
-import { HomeComponent } from './components/home/home.component';
-import { CivilizationsComponent } from './components/civilizations/civilizations.component';
-import { UnitsComponent } from './components/units/units.component';
-import { StructuresComponent } from './components/structures/structures.component';
-import { TechnologiesComponent } from './components/technologies/technologies.component';
-import { ArmorPipe } from './pipes/armor.pipe';
+import { CardComponent } from './components/card/card.component';
+// Pages componentes
+import { HomeComponent } from './pages/home/home.component';
+import { CivilizationsComponent } from './pages/civilizations/civilizations.component';
+import { UnitsComponent } from './pages/units/units.component';
+import { StructuresComponent } from './pages/structures/structures.component';
+import { TechnologiesComponent } from './pages/technologies/technologies.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    // pipes
+    CapatilizacionPipe,
+    ArmorPipe,
+    TextSizePipe,
+    // componentes shared
     NavbarComponent,
     FooterComponent,
+    CardsComponent,
+    CardComponent,
+    // componentes pages
+    HomeComponent,
     CivilizationsComponent,
     UnitsComponent,
-    CapatilizacionPipe,
-    CardsComponent,
-    TextSizePipe,
     StructuresComponent,
     TechnologiesComponent,
-    ArmorPipe
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

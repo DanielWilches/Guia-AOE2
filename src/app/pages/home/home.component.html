@@ -1,0 +1,73 @@
+<!-- Formulario de busqueda -->
+<main class="container animate__animated animate__zoomIn">
+  <section>
+    <form [formGroup]="forma" class="input-group mb-3" (ngSubmit)="getSearch(forma)" novalidate>
+      <input #InputSearch type="text" formControlName="search" name="search" class="form-control" placeholder="enter your search" />
+      <select class="custom-select" name="select" formControlName="selectedItem">
+        <option *ngFor="let item of group">{{ item }}</option>
+      </select>
+      <div class="input-group-append">
+        <!-- [disabled]="forma.controls['search'].valid && forma.controls['selectedItem'].valid" -->
+        <button type="submit" class="btn btn-warning"
+                [disabled]="!forma.valid"
+          >
+          <fa-icon [icon]='iconS.faSearch' ></fa-icon>
+        </button> 
+      </div>
+    </form>
+  </section>
+  <!-- sesion validaciones -->
+  <section name="validations" class="animate__animated fadeIn d-flex flex-row justify-content-lg-around">
+    <div *ngIf="forma.controls['search'].errors?.required && forma.controls['search'].touched" class="alert alert-danger animate__animated animate__fadeInDown d-flex justify-content-start">
+      <p class="text-center p-0 m-0"> {{ "el valor no es valido" | capatilizacion }}</p>
+    </div>
+    <div class="justify-content-end alert alert alert-danger animate__animated animate__fadeInDown" *ngIf="forma.controls['selectedItem'].errors?.required && forma.controls['selectedItem'].touched">
+      <p class="text p-0 m-0">{{ "la seleccion no es valida" | capatilizacion }}</p>
+    </div>
+    <div *ngIf="nullItem" class="alert alert-danger text-center animate__animated animate__fadeInDown">
+      <p class="p-0 m-0">
+        {{ "no ha seleccionado ningun item" | capatilizacion }}
+      </p>
+    </div>
+  </section>
+  <!-- sesion de terjeta de busqueda -->
+  <section name="cardSearch" *ngIf="nullAlert">
+    <app-card></app-card>
+  </section>
+  <!-- seccion error busqueda -->
+  <section >
+    <div *ngIf="alertError"  class=" alert alert-warning text-center"> {{'la busqueda realizada no se encontro en nuestras bases de datos. intente realizando otra busqueda' | capatilizacion}}</div>
+  </section>
+  <!-- sesion de informacion de entrada -->
+  <section>
+    <div *ngIf="!nullAlert" class="alert alert-success">
+      <p>
+        {{ "hello welcome to the quick guide to the era of empires 2, in this guide you will find all the teconolgias, units and structures of the 18 civilizations existing in this game" | capatilizacion }}
+      </p>
+      <div class="d-flex flex-row justify-content-lg-around">
+        <ul>
+          <li>Aztecs</li>
+          <li>Britons</li>
+          <li>Bizantines</li>
+          <li>Celts</li>
+          <li>Chinese</li>
+          <li>Franks</li>
+          <li>Goths</li>
+          <li>Huns</li>
+          <li>Japanese</li>
+        </ul>
+        <ul>
+          <li>Koreans</li>
+          <li>Mayans</li>
+          <li>Mongols</li>
+          <li>Persians</li>
+          <li>Saracens</li>
+          <li>Spanish</li>
+          <li>Teutons</li>
+          <li>Turks</li>
+          <li>Vikings</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>

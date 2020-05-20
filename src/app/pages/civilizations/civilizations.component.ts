@@ -10,6 +10,8 @@ export class CivilizationsComponent implements OnInit {
   @HostListener('scroll', ['$event'])
   civilizacion: any[] = [];
   identificacion = 'civilizations';
+
+  loading: boolean;
   constructor(private conexionS: ConexionService) {
     this.setCivilizations();
   }
@@ -17,13 +19,17 @@ export class CivilizationsComponent implements OnInit {
   ngOnInit(): void { }
   setCivilizations() {
     console.log('espere que esta cargando... ');
+    this.loading = true;
     this.conexionS.getCivilizations()
     .subscribe((resul: any) => {
+      this.loading = false;
       console.log('cargado');
       console.log(resul);
       return this.civilizacion = resul;
     },
-    (err: any) => { });
+    (err: any) => {
+      console.log(err);
+     });
   }
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnDestroy(): void {

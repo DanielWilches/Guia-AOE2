@@ -1,0 +1,6 @@
+<main class="container">
+   <div *ngIf="loading"  class="d-flex flex-column  align-items-center " >
+     <app-loading></app-loading>
+   </div>
+  <app-cards [items]="arryTechnologies" [id]="technologies"></app-cards>
+</main>

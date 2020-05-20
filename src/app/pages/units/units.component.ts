@@ -9,6 +9,9 @@ import { ConexionService } from '../../services/conexion.service';
 export class UnitsComponent implements OnInit {
   units: any[] = [];
   identificacion = 'units';
+  loading: boolean;
+  error: boolean;
+  errs: any;
   constructor(private conexionS: ConexionService) {
     this.getUnits();
   }
@@ -17,15 +20,18 @@ export class UnitsComponent implements OnInit {
   }
 
   getUnits() {
-    console.log('espere que esta cargando... ');
+    this.error = false;
+    this.loading =  true;
     this.conexionS.getUnits()
     .subscribe((resul: any) => {
-      console.log('cargado');
-      console.log(resul);
+      this.loading = false;
       this.units = resul;
     },
     (error: any) => {
-      console.log(error);
+      this.loading = false;
+      this.error = true;
+      return this.errs = error;
+      // statusText
     });
   }
 

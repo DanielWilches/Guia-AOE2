@@ -1,0 +1,6 @@
+<main class="container">
+  <div *ngIf="loading"  class="d-flex justify-content-center" >
+    <app-loading></app-loading>
+  </div>
+  <app-cards [items]="arrayStructures" [id]="structures"></app-cards>
+</main>

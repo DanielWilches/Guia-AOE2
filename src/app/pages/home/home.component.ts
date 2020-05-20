@@ -3,10 +3,6 @@ import { FormsModule, FormGroup, Validators, FormControl } from '@angular/forms'
 // servicios
 import { IconServiceService } from '../../services/icon-service.service';
 import { ConexionService } from '../../services/conexion.service';
-import { faClosedCaptioning } from '@fortawesome/free-solid-svg-icons';
-
-
-
 
 @Component({
   selector: 'app-home',
@@ -16,31 +12,52 @@ import { faClosedCaptioning } from '@fortawesome/free-solid-svg-icons';
 export class HomeComponent implements OnInit {
   forma: FormGroup;
   group: string[] = ['select item', 'civilization', 'unit', 'structure', 'technology'];
+  Civilizations: any[] = [];
   selectedItem: string;
   nullItem = false;
-  constructor(public iconS: IconServiceService, private conexionS: ConexionService) {
-    console.log(this.group);
-
+  nullAlert = false;
+  alertError = false;
+  constructor(private conexionS: ConexionService, public iconS: IconServiceService) {
   }
+
   ngOnInit() {
+    this.getCivilizations();
     this.validations();
   }
 
   getSearch(forma: FormGroup) {
-    if (forma.controls['selectedItem'].value === 'select item' || forma.controls['selectedItem'].value === '') {
+    console.log(forma);
+    if ( forma.controls['selectedItem'].value === '' || forma.controls['selectedItem'].value === 'select item' ) {
+      this.vistaCard(this.nullAlert);
+      setTimeout(() => {
+        return this.nullItem = false;
+      }, 5000);
       return this.nullItem = true;
     } else {
       this.conexionS.getSearch(forma.controls['selectedItem'].value, forma.controls['search'].value)
-        .subscribe((data) => {
-          console.log(data);
-        }, (error) => {
-          console.log(error);
-        });
+      .subscribe((data) => {
+        this.vistaCard(true);
+        console.log(data);
+      }, (error) => {
+        this.alertError = true;
+        setTimeout(() => {
+          this.alertError = false;
+        }, 5000);
+        console.log(error);
+      });
     }
   }
 
-  focusFunction() {
-    console.log('funcion focus');
+  vistaCard(arg: boolean ) {
+    this.nullAlert = arg;
+  }
+  getCivilizations() {
+    this.conexionS.getCivilizations().subscribe(
+      (data: any) => {
+        return this.Civilizations = data;
+      }, (error: any) => {
+        console.log(error);
+      });
   }
   validations() {
     this.forma = new FormGroup({
@@ -48,5 +65,4 @@ export class HomeComponent implements OnInit {
       selectedItem: new FormControl('', [Validators.required])
     });
   }
-
 }

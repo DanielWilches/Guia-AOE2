@@ -1,10 +1,10 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { CivilizationsComponent } from './components/civilizations/civilizations.component';
-import { UnitsComponent } from './components/units/units.component';
-import { StructuresComponent } from './components/structures/structures.component';
-import { TechnologiesComponent } from './components/technologies/technologies.component';
+import { HomeComponent } from './pages/home/home.component';
+import { CivilizationsComponent } from './pages/civilizations/civilizations.component';
+import { UnitsComponent } from './pages/units/units.component';
+import { StructuresComponent } from './pages/structures/structures.component';
+import { TechnologiesComponent } from './pages/technologies/technologies.component';
 
 
 const routes: Routes = [
