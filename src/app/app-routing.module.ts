@@ -5,6 +5,7 @@ import { CivilizationsComponent } from './pages/civilizations/civilizations.comp
 import { UnitsComponent } from './pages/units/units.component';
 import { StructuresComponent } from './pages/structures/structures.component';
 import { TechnologiesComponent } from './pages/technologies/technologies.component';
+import { CardComponent } from './components/card/card.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,9 @@ const routes: Routes = [
   {path: 'units', component: UnitsComponent},
   {path: 'structures', component: StructuresComponent},
   {path: 'technologies', component: TechnologiesComponent},
+  { path: 'card', component : CardComponent },
+  // {path: 'card/:civilization', component : CardComponent},
+  {path: 'card/:civilization/:identificacion', component : CardComponent},
   {path: '', pathMatch: 'full', redirectTo: 'Home'},
   {path: '**', pathMatch: 'full', redirectTo: 'Home'}
 ];

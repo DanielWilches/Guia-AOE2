@@ -1,1 +1,150 @@
-<p class="alert alert-dark" >Este comonente es card</p>
+<main class="container">
+  <section [ngSwitch]="identificacion">
+    <section *ngSwitchCase="'civilization'">
+      <div *ngFor="let item of items" class="card text-white mb-3">
+        <div class="card-header bg-secondary">
+          <h4 class="card-title">{{ item.name }}</h4>
+          <h5 class="card-subtitle">{{ item.expansion }}</h5>
+        </div>
+        <div class="card-body bg-light">
+          <h3 class="text-center" [style]="{ color: 'black' }">
+            informacion de la civilizacion
+          </h3>
+          <table class="table table-secondary p-5">
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>{{ item.id }}</td>
+              </tr>
+              <tr>
+                <td>nombre</td>
+                <td>{{ item.name }}</td>
+              </tr>
+              <tr>
+                <td>expansion</td>
+                <td>{{ item.expansion }}</td>
+              </tr>
+              <tr>
+                <td>army_type</td>
+                <td>{{ item.army_type }}</td>
+              </tr>
+              <tr *ngFor="let unique_unit of item.unique_unit; let i = index">
+                <td>unique_unit</td>
+                <td>{{ unique_unit }}</td>
+              </tr>
+              <tr *ngFor="let unique_tech of item.unique_tech; let i = index">
+                <td>unique_tech number</td>
+                <td>{{ unique_tech }}</td>
+              </tr>
+              <tr>
+                <td>team_bonus</td>
+                <td>{{ item.team_bonus }}</td>
+              </tr>
+              <tr *ngFor="let civilization_bonus of item.civilization_bonus">
+                <td>civilization_bonus</td>
+                <td>{{ civilization_bonus }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <!-- seccion unidades -->
+    <section *ngSwitchCase="'unit'">
+      <div *ngFor="let item of items" class="card text-white mb-3">
+        <div class="card-header bg-secondary">
+          <h4 class="card-title">{{ item.name }}</h4>
+          <h5 class="card-subtitle">{{ item.expansion }}</h5>
+          <div class="card-body bg-light">
+            <table class="table table-secondary p-5">
+              <tbody>
+                <tr>
+                  <td>id</td>
+                  <td>{{ item.id }}</td>
+                </tr>
+                <tr>
+                  <td>name</td>
+                  <td>{{ item.name }}</td>
+                </tr>
+                <tr>
+                  <td>description</td>
+                  <td>{{ item.description | armor }}</td>
+                </tr>
+                <tr>
+                  <td>expansion</td>
+                  <td>{{ item.expansion }}</td>
+                </tr>
+                <tr>
+                  <td>age</td>
+                  <td>{{ item.age }}</td>
+                </tr>
+                <tr>
+                  <td>created_in</td>
+                  <td>{{ item.created_in }}</td>
+                </tr>
+                <tr  >
+                  <td>cost</td>
+                  <td>{{ item.cost |json }}</td>
+                </tr>
+                <tr>
+                  <td>build_time</td>
+                  <td>{{ item.build_time}}</td>
+                </tr>
+                <tr>
+                  <td>reload_time</td>
+                  <td>{{ item.reload_time}}</td>
+                </tr>
+                <tr>
+                  <td>attack_delay</td>
+                  <td>{{ item.attack_delay | armor}}</td>
+                </tr>
+                <tr>
+                  <td>movement_rate</td>
+                  <td>{{ item.movement_rate}}</td>
+                </tr>
+                <tr>
+                  <td>hit_points</td>
+                  <td>{{ item.hit_points}}</td>
+                </tr>
+                <tr>
+                  <td>range</td>
+                  <td>{{ item.range | armor}}</td>
+                </tr>
+                <tr>
+                  <td>attack</td>
+                  <td>{{ item.attack}}</td>
+                </tr>
+                <tr>
+                  <td>armor</td>
+                  <td>{{ item.armor}}</td>
+                </tr>
+                <tr *ngFor="let attack_bonus  of item.attack_bonus"   >
+                  <td>attack_bonus</td>
+                  <td>{{ attack_bonus}}</td>
+                </tr>
+                <tr *ngFor="let armor_bonus of item.armor_bonus"  >
+                  <td>armor_bonus</td>
+                  <td>{{ armor_bonus}}</td>
+                </tr>
+                <tr>
+                  <td>search_radius</td>
+                  <td>{{ item.search_radius |armor}}</td>
+                </tr>
+                <tr>
+                  <td>blast_radius</td>
+                  <td>{{ item.accurac | armor}}</td>
+                </tr>
+                <tr>
+                  <td>blast_radius</td>
+                  <td>{{ item.blast_radius | armor}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section *ngSwitchCase="'structure'">structure</section>
+    <section *ngSwitchCase="'technology'">technology</section>
+  </section>
+</main>

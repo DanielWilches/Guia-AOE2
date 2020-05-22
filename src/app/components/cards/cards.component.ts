@@ -26,31 +26,8 @@ export class CardsComponent implements OnInit {
       structures: false,
       technilogies: false
     };
-    // console.log(this.id);
-    // // this.id = this.id.toLowerCase();
-    // this.setValidar(this.id);
   }
   ngOnInit(): void { }
-
-  // setValidar(id: string) {
-  //   switch (id) {
-  //     case 'civilizations':
-  //       this.tipoPage.civilizations = true;
-  //       break;
-  //     case 'units':
-  //       this.tipoPage.units = true;
-  //       break;
-
-  //     default:
-  //       this.tipoPage = {
-  //         civilizations: false,
-  //         units: false,
-  //         structures: false,
-  //         technilogies: false
-  //       };
-  //       break;
-  //   }
-  // }
 
 }
 interface Caracter {

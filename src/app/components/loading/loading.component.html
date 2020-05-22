@@ -1,3 +1,16 @@
 <!-- <fa-icon [icon]="[iconS.faSpinner]" ></fa-icon> -->
-
-<fa-icon [styles]="{'color': 'white'}" [icon]="iconS.faCircleNotch" [spin]="true"    size="7x"></fa-icon>
+<main>
+  <section name="alert">
+    <div class="alert alert-info text-center">
+      <h4 class="alert-heading">{{ "cargando..." | capatilizacion }}</h4>
+      <fa-icon
+        [styles]="{ color: 'gree' }"
+        [icon]="iconS.faCircleNotch"
+        [spin]="true"
+        size="5x"
+      ></fa-icon>
+      <hr />
+      <p class="mb-0">{{ 'los datos de este pagina se esta cargando, espere un momneto porfavor' | capatilizacion}} </p>
+    </div>
+  </section>
+</main>

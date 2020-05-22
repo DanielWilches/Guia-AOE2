@@ -30,17 +30,18 @@
       </p>
     </div>
   </section>
-  <!-- sesion de terjeta de busqueda -->
-  <section name="cardSearch" *ngIf="nullAlert">
-    <app-card></app-card>
-  </section>
+  <!-- seccion de la  terjeta de busqueda -->
+  <!-- <section name="cardSearch" *ngIf="nullAlert">
+    <app-card [item]="objectSelccionado" [id]="id" ></app-card>
+  </section> -->
   <!-- seccion error busqueda -->
   <section >
     <div *ngIf="alertError"  class=" alert alert-warning text-center"> {{'la busqueda realizada no se encontro en nuestras bases de datos. intente realizando otra busqueda' | capatilizacion}}</div>
   </section>
   <!-- sesion de informacion de entrada -->
   <section>
-    <div *ngIf="!nullAlert" class="alert alert-success">
+    <!-- *ngIf="!nullAlert" -->
+    <div  class="alert alert-success">
       <p>
         {{ "hello welcome to the quick guide to the era of empires 2, in this guide you will find all the teconolgias, units and structures of the 18 civilizations existing in this game" | capatilizacion }}
       </p>
