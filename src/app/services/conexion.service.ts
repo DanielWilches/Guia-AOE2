@@ -29,7 +29,7 @@ export class ConexionService {
     return this.http.get(`${this.api}/technologies`).pipe(map((data: any) => data.technologies));
   }
   // Busquedas
-  // https://age-of-empires-2-api.herokuapp.com/api/v1/la seccion donde vas buscar/tu busqueda
+  // https://age-of-empires-2-api.herokuapp.com/api/v1/la_seccion_donde_vas_buscar/tu_busqueda
   getSearch(type: string, search: string) {
     return this.http.get(`${this.api}/${type}/${search}`);
   }

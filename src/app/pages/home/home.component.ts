@@ -14,8 +14,6 @@ import { ConexionService } from '../../services/conexion.service';
 export class HomeComponent implements OnInit {
   forma: FormGroup;
   group: string[] = ['select item', 'civilization', 'unit', 'structure', 'technology'];
-  groupSeleccionado: string;
-  itemSeleccionado: string;
   nullItem = false;
   nullAlert = false;
   alertError = false;
@@ -38,9 +36,7 @@ export class HomeComponent implements OnInit {
       this.conexionS.getSearch(forma.controls['selectedItem'].value, forma.controls['search'].value)
         .subscribe((data: any) => {
           this.vistaCard(true);
-          this.groupSeleccionado = forma.controls['selectedItem'].value;
-          this.itemSeleccionado = JSON.stringify(data);
-          this.router.navigate(['card/', this.itemSeleccionado, this.groupSeleccionado]);
+          this.router.navigate(['card/', forma.controls['selectedItem'].value, data.id]);
         }, (error) => {
           this.alertError = true;
           setTimeout(() => {

@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'technologies', component: TechnologiesComponent},
   { path: 'card', component : CardComponent },
   // {path: 'card/:civilization', component : CardComponent},
-  {path: 'card/:civilization/:identificacion', component : CardComponent},
+  {path: 'card/:itmesGroup/:id', component : CardComponent},
   {path: '', pathMatch: 'full', redirectTo: 'Home'},
   {path: '**', pathMatch: 'full', redirectTo: 'Home'}
 ];
@@ -26,3 +26,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+
