@@ -23,12 +23,12 @@ export class CardComponent implements OnInit {
     });
   }
   getItem(itmesGroup: string, id: string) {
+    this.title = itmesGroup;
     switch (itmesGroup) {
       case 'civilization':
         this.title = itmesGroup;
         this.ConexionS.getSearch(itmesGroup, id)
           .subscribe((data: any) => {
-            console.log(data['civilization_bonus']);
             this.loading = true;
             return this.item = data;
           }, (err: any) => {
@@ -37,8 +37,9 @@ export class CardComponent implements OnInit {
         break;
       case 'unit':
         this.ConexionS.getSearch(itmesGroup, id)
-          .subscribe((data: any) => {
-            console.log(Object.keys(data).length);
+        .subscribe((data: any) => {
+            console.log(data);
+            this.loading = true;
             return this.item = data;
           }, (err: any) => {
             console.log(err);
@@ -47,7 +48,7 @@ export class CardComponent implements OnInit {
       case 'structure':
         this.ConexionS.getSearch(itmesGroup, id)
           .subscribe((data: any) => {
-            console.log(Object.keys(data).length);
+            this.loading = true;
             return this.item = data;
           }, (err: any) => {
             console.log(err);
@@ -56,7 +57,7 @@ export class CardComponent implements OnInit {
       case 'technology':
         this.ConexionS.getSearch(itmesGroup, id)
           .subscribe((data: any) => {
-            console.log(Object.keys(data).length);
+            this.loading = true;
             return this.item = data;
           }, (err: any) => {
             console.log(err);
@@ -68,4 +69,3 @@ export class CardComponent implements OnInit {
     }
   }
 }
-

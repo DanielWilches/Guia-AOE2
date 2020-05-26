@@ -25,6 +25,7 @@ import { UnitsComponent } from './pages/units/units.component';
 import { StructuresComponent } from './pages/structures/structures.component';
 import { TechnologiesComponent } from './pages/technologies/technologies.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { ArrayNullPipe } from './pipes/array-null.pipe';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     UnitsComponent,
     StructuresComponent,
     TechnologiesComponent,
-    LoadingComponent
+    LoadingComponent,
+    ArrayNullPipe
   ],
   imports: [
     BrowserModule,
