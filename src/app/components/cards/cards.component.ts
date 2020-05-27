@@ -29,6 +29,10 @@ export class CardsComponent implements OnInit {
   }
   ngOnInit(): void { }
 
+  setItem( item: any){
+    console.log(item);
+  }
+
 }
 interface Caracter {
   civilizations: boolean;
