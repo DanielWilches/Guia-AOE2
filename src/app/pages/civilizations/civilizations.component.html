@@ -1,8 +1,9 @@
 <div class="container" >
     <div  class=" d-flex justify-content-center ">
-        <app-loading *ngIf="loading"  ></app-loading>
+        <app-loading *ngIf="conexionS.loading"  ></app-loading>
+        <app-erros *ngIf="conexionS.err"  ></app-erros>
     </div>
-    <app-cards   [items]="civilizacion" [id]="identificacion" ></app-cards>
+    <app-cards   [items]="conexionS.civilizations" [id]="identificacion" ></app-cards>
 </div>
 
 

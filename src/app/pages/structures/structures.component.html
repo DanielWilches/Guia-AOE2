@@ -1,6 +1,8 @@
 <main class="container">
-  <div *ngIf="loading"  class="d-flex justify-content-center" >
-    <app-loading></app-loading>
+  <div   class="d-flex justify-content-center" >
+    <app-loading *ngIf="conexionS.loading" ></app-loading>
+    <app-erros *ngIf="conexionS.err"  ></app-erros>
+
   </div>
-  <app-cards [items]="arrayStructures" [id]="structures"></app-cards>
+  <app-cards [items]="conexionS.structures" [id]="structures"></app-cards>
 </main>

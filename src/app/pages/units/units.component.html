@@ -1,15 +1,8 @@
 <main class="container" >
   <!-- seccion de carga -->
-  <section *ngIf="loading" class="d-flex flex-column  align-items-center"  >
-    <app-loading></app-loading>
+  <section  class="d-flex flex-column  align-items-center"  >
+    <app-loading *ngIf="conexionS.loading" ></app-loading>
+     <app-erros *ngIf="conexionS.err"  ></app-erros>
   </section>
-  <!-- seccion error -->
-  <section *ngIf="error" >
-    <div class="alert alert-danger" >
-      <p class="text-center" >{{ errs.statusText }}</p>
-      <button class="btn btn-block btn-success" type="reset" (click)="getUnits()" >reset</button>
-    </div>
-  </section>
-  <!-- seccion de cartas de informacion -->
-  <app-cards [items]="units" [id]="identificacion"></app-cards>
+  <app-cards [items]="conexionS.units" [id]="identificacion"></app-cards>
 </main>

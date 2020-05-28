@@ -1,0 +1,16 @@
+<main>
+    <section name="alert">
+      <div class="alert alert-danger text-center">
+        <h4 class="alert-heading">{{ "error" | capatilizacion }}<small> {{ conexionS.error['status'] }} </small></h4>
+        <fa-icon
+          [styles]="{ color: 'gree' }"
+          [icon]="iconS.faTimes"
+          size="5x"
+          ></fa-icon>
+          <!-- pull="left" -->
+        <hr>
+        <p class="mb-0">{{ 'la carga de los datos presento un error, intente ingresar mas tarde' | capatilizacion}} </p>
+      </div>
+    </section>
+  </main>
+  

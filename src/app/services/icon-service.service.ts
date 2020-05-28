@@ -3,6 +3,9 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+
+
 
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
@@ -22,5 +25,6 @@ export class IconServiceService {
   faSpinner = faSpinner;
   faCircleNotch = faCircleNotch;
   faSearch = faSearch;
+  faTimes =  faTimes;
   constructor() { }
 }

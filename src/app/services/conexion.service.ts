@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+// interfaces
+import { Civilization, } from '../interfaces/civilizations.inteface';
+import { Units } from '../interfaces/units.interface';
+import { Structures } from '../interfaces/strucres.interface';
+import { Technologies } from '../interfaces/technologies.interface';
 
 
 @Injectable({
@@ -9,24 +13,86 @@ import { map } from 'rxjs/operators';
 export class ConexionService {
   url: string;
   api: string;
+  public civilizations: Civilization[] = [];
+  public units: Units[] = [];
+  public structures: Structures[] = [];
+  public technologies: Technologies[] = [];
+  public error: any[] = [];
+  public loading: boolean;
+  public err: boolean;
+
   constructor(private http: HttpClient) {
     this.api = 'api/v1';
   }
   // https://age-of-empires-2-api.herokuapp.com/api/v1/civilizations
   getCivilizations() {
-    return this.http.get(`${this.api}/civilizations`).pipe(map((data: any) => data.civilizations));
+    if (this.civilizations.length === 0) {
+      this.loading = true;
+      return this.http.get(`${this.api}/civilizations`).subscribe((data) => {
+        this.civilizations = data[`civilizations`];
+        this.loading = false;
+      },
+        err => {
+          this.loading = false;
+          this.err = true;
+          this.error = err;
+        });
+    } else {
+      this.loading = false;
+    }
   }
   //  https://age-of-empires-2-api.herokuapp.com/api/v1/units
   getUnits() {
-    return this.http.get(`${this.api}/units`).pipe(map((data: any) => data.units));
+    if ( this.units.length === 0 ) {
+      this.loading = true;
+      return this.http.get(`${this.api}/units`).subscribe((data) => {
+        this.units = data[`units`];
+        this.loading = false;
+      }, err => {
+
+        this.loading = false;
+        this.err = true;
+        this.error = err;
+      });
+    }else {
+      this.loading = false;
+    }
   }
   // https://age-of-empires-2-api.herokuapp.com/api/v1/structures
   getStructures() {
-    return this.http.get(`${this.api}/structures`).pipe(map((data: any) => data.structures));
+    if (this.structures.length === 0) {
+      this.loading = true;
+      return this.http.get(`${this.api}/structures`).subscribe((data) => {
+        this.structures = data[`structures`];
+        this.loading = false;
+      }, err => {
+  
+        this.loading = false;
+        this.err = true;
+        this.error = err;
+      });
+
+    } else {
+      this.loading = false;
+    }
   }
   // https://age-of-empires-2-api.herokuapp.com/api/v1/technologies
   getTechnologies() {
-    return this.http.get(`${this.api}/technologies`).pipe(map((data: any) => data.technologies));
+    if ( this.technologies.length === 0 )  {
+      this.loading = true;
+      return this.http.get(`${this.api}/technologies`).subscribe((data) => {
+        this.technologies = data[`technologies`];
+        this.loading = false;
+      },
+        err => {
+
+          this.loading = false;
+          this.err = true;
+          this.error = err;
+        });
+    } else {
+      this.loading = false;
+    }
   }
   // Busquedas
   // https://age-of-empires-2-api.herokuapp.com/api/v1/la_seccion_donde_vas_buscar/tu_busqueda

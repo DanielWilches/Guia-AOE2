@@ -26,17 +26,17 @@ export class HomeComponent implements OnInit {
 
   getSearch(forma: FormGroup) {
 
-    if (forma.controls['selectedItem'].value === '' || forma.controls['selectedItem'].value === 'select item') {
+    if (forma.controls[`selectedItem`].value === '' || forma.controls[`selectedItem`].value === 'select item') {
       this.vistaCard(this.nullAlert);
       setTimeout(() => {
         return this.nullItem = false;
       }, 5000);
       return this.nullItem = true;
     } else {
-      this.conexionS.getSearch(forma.controls['selectedItem'].value, forma.controls['search'].value)
+      this.conexionS.getSearch(forma.controls[`selectedItem`].value, forma.controls[`search`].value)
         .subscribe((data: any) => {
           this.vistaCard(true);
-          this.router.navigate(['card/', forma.controls['selectedItem'].value, data.id]);
+          this.router.navigate(['card/', forma.controls[`selectedItem`].value, data.id]);
         }, (error) => {
           this.alertError = true;
           setTimeout(() => {
