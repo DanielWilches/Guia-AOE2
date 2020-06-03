@@ -24,7 +24,7 @@ export class ConexionService {
   public err: boolean;
   public seletedGroup: boolean;
   constructor(private http: HttpClient, private router: Router) {
-    this.api = 'apwi/v1';
+    this.api = 'api/v1';
   }
   // https://age-of-empires-2-api.herokuapp.com/api/v1/civilizations
   getCivilizations() {
