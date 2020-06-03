@@ -1,10 +1,8 @@
-<div class="container" >
-    <div  class=" d-flex justify-content-center ">
-        <app-loading *ngIf="conexionS.loading"  ></app-loading>
-        <app-erros *ngIf="conexionS.err"  ></app-erros>
-    </div>
-    <app-cards   [items]="conexionS.civilizations" [id]="identificacion" ></app-cards>
-</div>
-
-
-
+<main class="container scrollbaredit">
+  <app-loading *ngIf="conexionS.loading"></app-loading>
+  <app-erros *ngIf="conexionS.err"></app-erros>
+  <app-cards
+    [items]="conexionS.civilizations"
+    [id]="identificacion"
+  ></app-cards>
+</main>

@@ -1,10 +1,12 @@
 <!-- Cartas de unidades -->
+
 <div [ngSwitch]="id">
   <!-- cartas de civilizaciones -->
   <!-- <ng-template [ngSwitchCase]="'civilizations' || 'civilization'  "> -->
+    <cdk-virtual-scroll-viewport class="list-con" itemSize="50" >
     <ng-template [ngSwitchCase]="'civilization'   ">
-    <section  class="mt-5 row row-cols-1 row-cols-md-2">
-      <div class="col mb-4 animate__animated animate__fadeInDown" *ngFor="let item of items">
+    <section  class="row row-cols-1 row-cols-md-2">
+      <div class="col mb-4 animate__animated animate__fadeInDown" *cdkVirtualFor="let item of items">
         <div class="card bg-dark">
           <header class="card-header border-0" >
             <h3 class="card-title text-light">{{ item.name | capatilizacion }}</h3>
@@ -173,4 +175,5 @@
 
   <ng-template ngSwitchDefault>
   </ng-template>
+</cdk-virtual-scroll-viewport>
 </div>

@@ -9,17 +9,9 @@ import { ConexionService } from 'src/app/services/conexion.service';
 export class CivilizationsComponent implements OnInit {
   @HostListener('scroll', ['$event'])
   identificacion = 'civilization';
-
   loading: boolean;
   constructor(public conexionS: ConexionService) {
     this.conexionS.getCivilizations();
   }
-
   ngOnInit(): void { }
-  // tslint:disable-next-line: use-lifecycle-interface
-  // ngOnDestroy(): void {
-  //   this.conexionS.getCivilizations().unsubscribe();
-  // }
-
-
 }

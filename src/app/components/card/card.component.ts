@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ConexionService } from '../../services/conexion.service';
 import { createAotUrlResolver } from '@angular/compiler';
+import { Unsubscribable } from 'rxjs';
 
 @Component({
   selector: 'app-card',
@@ -24,66 +25,28 @@ export class CardComponent implements OnInit {
     });
   }
   getItem(itmesGroup: string, id: string) {
+    this.loading  = true;
     this.title = itmesGroup;
     this.ConexionS.getSearch(itmesGroup, id)
-      .subscribe((data: any) => {
-        this.loading = true;
-        return this.item = data;
-      }, (err: any) => {
-        console.log(err);
-      });
-    // switch (itmesGroup) {
-    //   case 'civilization':
-    //     this.ConexionS.getSearch(itmesGroup, id)
-    //       .subscribe((data: any) => {
-    //         this.loading = true;
-    //         return this.item = data;
-    //       }, (err: any) => {
-    //         console.log(err);
-    //       });
-    //     break;
-    //   case 'unit':
-    //     this.ConexionS.getSearch(itmesGroup, id)
-    //       .subscribe((data: any) => {
-    //         this.loading = true;
-    //         return this.item = data;
-    //       }, (err: any) => {
-    //         console.log(err);
-    //       });
-    //     break;
-    //   case 'structure':
-    //     this.ConexionS.getSearch(itmesGroup, id)
-    //       .subscribe((data: any) => {
-    //         this.loading = true;
-    //         return this.item = data;
-    //       }, (err: any) => {
-    //         console.log(err);
-    //       });
-    //     break;
-    //   case 'technology':
-    //     this.ConexionS.getSearch(itmesGroup, id)
-    //       .subscribe((data: any) => {
-    //         this.loading = true;
-    //         return this.item = data;
-    //       }, (err: any) => {
-    //         console.log(err);
-    //       });
-    //     break;
-    //   default:
-    //     console.log('error');
-    //     break;
-    // }
+    .subscribe((data: any) => {
+      setTimeout(() => {
+        this.loading = false;
+      }, 5000);
+      return this.item = data;
+    }, (err: any) => {
+      console.log(err);
+    });
   }
   // dejo constancia que en algunos elementos que se obtienen como respuesta
   // son de tipo array con mas de un indice
   setUrl(url: string) {
     const URLARRAY = this.desintegracionArray(url);
     this.ConexionS.getSearch(URLARRAY[0], URLARRAY[1])
-      .subscribe((data: any) => {
-        this.sizeResult(URLARRAY, data);
-      }, (err => {
-        console.log(err);
-      }));
+    .subscribe((data: any) => {
+      this.sizeResult(URLARRAY, data);
+    }, (err => {
+      console.log(err);
+    }));
   }
   desintegracionArray(url: string): string[] {
     const URL: string[] = url.split('/');

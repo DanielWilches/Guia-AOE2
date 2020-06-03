@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 // interfaces
 import { Civilization, } from '../interfaces/civilizations.inteface';
 import { Units } from '../interfaces/units.interface';
@@ -20,9 +22,9 @@ export class ConexionService {
   public error: any[] = [];
   public loading: boolean;
   public err: boolean;
-
-  constructor(private http: HttpClient) {
-    this.api = 'api/v1';
+  public seletedGroup: boolean;
+  constructor(private http: HttpClient, private router: Router) {
+    this.api = 'apwi/v1';
   }
   // https://age-of-empires-2-api.herokuapp.com/api/v1/civilizations
   getCivilizations() {
@@ -43,7 +45,7 @@ export class ConexionService {
   }
   //  https://age-of-empires-2-api.herokuapp.com/api/v1/units
   getUnits() {
-    if ( this.units.length === 0 ) {
+    if (this.units.length === 0) {
       this.loading = true;
       return this.http.get(`${this.api}/units`).subscribe((data) => {
         this.units = data[`units`];
@@ -54,7 +56,7 @@ export class ConexionService {
         this.err = true;
         this.error = err;
       });
-    }else {
+    } else {
       this.loading = false;
     }
   }
@@ -66,7 +68,7 @@ export class ConexionService {
         this.structures = data[`structures`];
         this.loading = false;
       }, err => {
-  
+
         this.loading = false;
         this.err = true;
         this.error = err;
@@ -78,7 +80,7 @@ export class ConexionService {
   }
   // https://age-of-empires-2-api.herokuapp.com/api/v1/technologies
   getTechnologies() {
-    if ( this.technologies.length === 0 )  {
+    if (this.technologies.length === 0) {
       this.loading = true;
       return this.http.get(`${this.api}/technologies`).subscribe((data) => {
         this.technologies = data[`technologies`];
@@ -100,6 +102,18 @@ export class ConexionService {
     return this.http.get(`${this.api}/${type}/${search}`);
   }
 
-
-
+  getBusqueda(form: FormGroup) {
+    if (form.controls.selectedItem.value === 'select item') {
+      this.seletedGroup = true;
+    } else {
+      return this.http.get(`${this.api}/${form.controls.selectedItem.value}/${form.controls.search.value}`)
+        .subscribe((data: any) => {
+          console.log(data);
+          this.router.navigate(['card/', form.controls.selectedItem.value, data.id]);
+        }, err => {
+          this.err = true;
+          console.log(err);
+        });
+    }
+  }
 }

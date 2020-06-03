@@ -1,3 +1,17 @@
-.btn-outline-primary {
-    border: none;
+.btn-outline-primary{ 
+    border:none;
+}
+
+.main-table{
+    height: 600px;
+    width: 100%;
+}
+ 
+.main-table::-webkit-scrollbar {
+    width: 5px;
+    background-color:transparent;
+}
+.main-table::-webkit-scrollbar-thumb {
+    background-color: tomato;
+    border-radius: 2px;
 }

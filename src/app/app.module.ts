@@ -27,6 +27,8 @@ import { CivilizationsComponent } from './pages/civilizations/civilizations.comp
 import { UnitsComponent } from './pages/units/units.component';
 import { StructuresComponent } from './pages/structures/structures.component';
 import { TechnologiesComponent } from './pages/technologies/technologies.component';
+import { ObjetosOfArrayPipe } from './pipes/objetos-of-array.pipe';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { TechnologiesComponent } from './pages/technologies/technologies.compone
     TechnologiesComponent,
     LoadingComponent,
     ArrayNullPipe,
-    ErrosComponent
+    ErrosComponent,
+    ObjetosOfArrayPipe,
+
   ],
   imports: [
     BrowserModule,

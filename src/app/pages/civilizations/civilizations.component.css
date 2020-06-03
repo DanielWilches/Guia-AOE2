@@ -1,0 +1,4 @@
+.scrollbaredit::-webkit-scrollbar {
+    width: 7px;
+    background-color: black;
+}

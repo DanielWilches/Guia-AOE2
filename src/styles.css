@@ -1,7 +1,27 @@
 .fondo {
-    background-image: url('./assets/img/Fondo.jpg');  
+    background-image: url('./assets/img/Fondo.jpg');
+    /* position: fixed; */
+    background-repeat: no-repeat;
+    background-attachment: fixed
 }
-body {
+body{ overflow: hidden; }
+
+/* body {
     height: 100vh;
     width: 100vw;
-}
+    overflow-x: hidden;
+} */
+
+
+/* fondo del scroll bar */
+
+/* body::-webkit-scrollbar { */
+    /* overflow: hidden; */
+    /* width: 7px;
+    background-color: white;
+} */
+/* scroll bar */
+/* body::-webkit-scrollbar-thumb {
+    background: black;
+} */
+

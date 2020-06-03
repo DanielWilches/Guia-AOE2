@@ -5,263 +5,302 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head> -->
+
 <!-- <body> -->
 <main class="container">
-  <section *ngIf="loading">
+  <app-loading *ngIf="loading"></app-loading>
+  <section
+    class="animate__animated animate__fadeIn main-table"
+    *ngIf="!loading"
+  >
     <h2 class="text-center text-light">
       <small> {{ "information table of" | capatilizacion }} </small> {{ title }}
     </h2>
-    <div class="p-2 bg-dark text-light">
-      <h4 class="font-weight-bolder fsm">{{ item["name"] }}</h4>
-      <h6 class="font-weight-light">{{ item["expansion"] }}</h6>
-    </div>
-    <table class="table table-striped">
-      <thead class="thead-light">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">name</th>
-          <th scope="col">value</th>
-        </tr>
-      </thead>
-      <tbody class="table-light">
-        <tr>
-          <th scope="row"></th>
-          <td>{{ "id" | capatilizacion }}</td>
-          <td class="w-50">{{ item["id"] }}</td>
-        </tr>
-        <tr>
-          <th scope="row"></th>
-          <td>{{ "name" | capatilizacion }}</td>
-          <td class="w-50">{{ item["name"] }}</td>
-        </tr>
-        <tr>
-          <th scope="row"></th>
-          <td>{{ "expansion" | capatilizacion }}</td>
-          <td class="w-50">{{ item["expansion"] }}</td>
-        </tr>
-        <!-- container of  civilization -->
-        <ng-container *ngIf="title === 'civilization'">
-          <tr
-            *ngFor="
-              let unique_unit of item['unique_unit'] | arrayNull;
-              let i = index
-            "
-          >
-            <th scope="row">{{ i + 1 }}</th>
-            <td>{{ "unique unit" | capatilizacion }}</td>
-            <td class="w-50">
-              <button
-                class="btn btn-outline-primary btn-sm"
-                (click)="setUrl(unique_unit)"
-              >
-                click me
-              </button>
-            </td>
+    <!-- <div class="p-2 bg-dark text-light">
+        <h4 class="font-weight-bolder fsm">{{ item["name"] }}</h4>
+        <h6 class="font-weight-light">{{ item["expansion"] }}</h6>
+      </div> -->
+    <cdk-virtual-scroll-viewport class="main-table" itemSize="40">
+      <table class="table table-striped ">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">value</th>
           </tr>
-          <tr
-            *ngFor="
-              let unique_tech of item['unique_tech'] | arrayNull;
-              let i = index
-            "
-          >
-            <th scope="row">{{ i + 1 }}</th>
-            <td>{{ "unique tech" | capatilizacion }}</td>
-            <td class="w-50">
-              <button
-                type="button"
-                class="btn btn-outline-primary btn-sm"
-                (click)="setUrl(unique_tech)"
-              >
-                click me
-              </button>
-              <!-- <a class="btn btn-outline-primary btn-sm" [href]="unique_tech">
+        </thead>
+        <tbody class="table-light">
+          <tr>
+            <th scope="row"></th>
+            <td>{{ "id" | capatilizacion }}</td>
+            <td class="w-50">{{ item["id"] }}</td>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td>{{ "name" | capatilizacion }}</td>
+            <td class="w-50">{{ item["name"] }}</td>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td>{{ "expansion" | capatilizacion }}</td>
+            <td class="w-50">{{ item["expansion"] }}</td>
+          </tr>
+          <!-- container of  civilization -->
+          <ng-container *ngIf="title === 'civilization'">
+            <tr
+              *ngFor="
+                let unique_unit of item['unique_unit'] | arrayNull;
+                let i = index
+              "
+            >
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ "unique unit" | capatilizacion }}</td>
+              <td class="w-50">
+                <button
+                  class="btn btn-outline-primary btn-sm"
+                  (click)="setUrl(unique_unit)"
+                >
+                  click me
+                </button>
+              </td>
+            </tr>
+            <tr
+              *ngFor="
+                let unique_tech of item['unique_tech'] | arrayNull;
+                let i = index
+              "
+            >
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ "unique tech" | capatilizacion }}</td>
+              <td class="w-50">
+                <button
+                  type="button"
+                  class="btn btn-outline-primary btn-sm"
+                  (click)="setUrl(unique_tech)"
+                >
+                  click me
+                </button>
+                <!-- <a class="btn btn-outline-primary btn-sm" [href]="unique_tech">
                 click me
               </a> -->
-            </td>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <td>{{ "team bonus" | capatilizacion }}</td>
-            <td class="w-50">{{ item["team_bonus"] }}</td>
-          </tr>
-          <tr
-            *ngFor="
-              let civilization_bonus of item['civilization_bonus'] | arrayNull;
-              let i = index
+              </td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td>{{ "team bonus" | capatilizacion }}</td>
+              <td class="w-50">{{ item["team_bonus"] }}</td>
+            </tr>
+            <tr
+              *ngFor="
+                let civilization_bonus of item['civilization_bonus']
+                  | arrayNull;
+                let i = index
+              "
+            >
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ "civilization bonus" | capatilizacion }}</td>
+              <td class="w-50">{{ civilization_bonus }}</td>
+            </tr>
+          </ng-container>
+          <!-- container of unit -->
+          <ng-container *ngIf="title === 'unit'">
+            <tr>
+              <th scope="row"></th>
+              <th>{{ "created in" | capatilizacion }}</th>
+              <th class="w-50">
+                <button
+                  type="button"
+                  class="btn btn-outline-primary btn-sm"
+                  (click)="setUrl(item['created_in'])"
+                >
+                  click me
+                </button>
+              </th>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <th>{{ "attack_delay" | capatilizacion }}</th>
+              <th class="w-50">{{ item["attack_delay"] | armor }}</th>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <th>{{ "movement rate" | capatilizacion }}</th>
+              <th class="w-50">{{ item["movement_rate"] | armor }}</th>
+            </tr>
+            <tr
+              *ngFor="
+                let attack_bonus of item['attack_bonus'] | arrayNull;
+                let i = index
+              "
+            >
+              <th scope="row">{{ i + 1 }}</th>
+              <th>{{ "attack bonus" | capatilizacion }}</th>
+              <th class="w-50">{{ attack_bonus }}</th>
+            </tr>
+            <tr
+              *ngFor="
+                let armor_bonus of item['armor_bonus'] | arrayNull;
+                let i = index
+              "
+            >
+              <th scope="row">{{ i + 1 }}</th>
+              <th>{{ "armor bonus" | capatilizacion }}</th>
+              <th class="w-50">{{ armor_bonus | armor }}</th>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <th>{{ "search radius" | capatilizacion }}</th>
+              <th>{{ item["search_radius"] | armor }}</th>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <th>{{ "accuracy" | capatilizacion }}</th>
+              <th>{{ item["accuracy"] | armor }}</th>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <th>{{ "blast_radius" | capatilizacion }}</th>
+              <th>{{ item["blast_radius"] | armor }}</th>
+            </tr>
+          </ng-container>
+          <!-- container of structure -->
+          <ng-container *ngIf="title === 'structure'">
+            <tr>
+              <th scope="row"></th>
+              <th>{{ "special" | capatilizacion }}</th>
+              <th class="w-50">{{ item["special"] | armor }}</th>
+            </tr>
+          </ng-container>
+          <!-- container of technology -->
+          <ng-container *ngIf="title === 'technology'">
+            <tr>
+              <th scope="row"></th>
+              <th>{{ "develops in" | capatilizacion }}</th>
+              <th class="w-50">
+                <button
+                  class="btn btn-outline-primary"
+                  type="button"
+                  (click)="setUrl(item['develops_in'])"
+                >
+                  click me
+                </button>
+              </th>
+            </tr>
+            <tr
+              *ngFor="
+                let applies_to of item['applies_to'] | arrayNull;
+                let i = index
+              "
+            >
+              <th scope="row">{{ i + 1 }}</th>
+              <th>{{ "applies to" | capatilizacion }}</th>
+              <th class="w-50">
+                <button
+                  type="button"
+                  class="btn btn-outline-primary"
+                  (click)="setUrl(applies_to)"
+                >
+                  click me
+                </button>
+              </th>
+            </tr>
+          </ng-container>
+          <!-- container of unit && container of structure && container of technology -->
+          <ng-container
+            *ngIf="
+              title === 'technology' ||
+              title === 'structure' ||
+              title === 'unit'
             "
           >
-            <th scope="row">{{ i + 1 }}</th>
-            <td>{{ "civilization bonus" | capatilizacion }}</td>
-            <td class="w-50">{{ civilization_bonus }}</td>
-          </tr>
-        </ng-container>
-        <!-- container of unit -->
-        <ng-container *ngIf="title === 'unit'">
-          <tr>
-            <th scope="row"></th>
-            <th>{{ "created in" | capatilizacion }}</th>
-            <th class="w-50">
-              <button
-                type="button"
-                class="btn btn-outline-primary btn-sm"
-                (click)="setUrl(item['created_in'])"
-              >
-                click me
-              </button>
-            </th>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <th>{{ "attack_delay" | capatilizacion }}</th>
-            <th class="w-50">{{ item["attack_delay"] | armor }}</th>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <th>{{ "movement rate" | capatilizacion }}</th>
-            <th class="w-50">{{ item["movement_rate"] | armor }}</th>
-          </tr>
-          <tr
-            *ngFor="
-              let attack_bonus of item['attack_bonus'] | arrayNull;
-              let i = index
-            "
-          >
-            <th scope="row">{{ i + 1 }}</th>
-            <th>{{ "attack bonus" | capatilizacion }}</th>
-            <th class="w-50">{{ attack_bonus }}</th>
-          </tr>
-          <tr
-            *ngFor="
-              let armor_bonus of item['armor_bonus'] | arrayNull;
-              let i = index
-            "
-          >
-            <th scope="row">{{ i + 1 }}</th>
-            <th>{{ "armor bonus" | capatilizacion }}</th>
-            <th class="w-50">{{ armor_bonus | armor }}</th>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <th>{{ "search radius" | capatilizacion }}</th>
-            <th>{{ item["search_radius"] | armor }}</th>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <th>{{ "accuracy" | capatilizacion }}</th>
-            <th>{{ item["accuracy"] | armor }}</th>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <th>{{ "blast_radius" | capatilizacion }}</th>
-            <th>{{ item["blast_radius"] | armor }}</th>
-          </tr>
-        </ng-container>
-        <!-- container of structure -->
-        <ng-container *ngIf="title === 'structure'">
-          <tr>
-            <th scope="row"></th>
-            <th>{{ "special" | capatilizacion }}</th>
-            <th class="w-50">{{ item["special"] | armor }}</th>
-          </tr>
-        </ng-container>
-        <!-- container of technology -->
-        <ng-container *ngIf="title === 'technology'">
-          <tr>
-            <th scope="row"></th>
-            <th>{{ "develops in" | capatilizacion }}</th>
-            <th class="w-50">
-              <button
-                class="btn btn-outline-primary"
-                type="button"
-                (click)="setUrl(item['develops_in'])"
-              >
-                click me
-              </button>
-            </th>
-          </tr>
-          <tr
-            *ngFor="
-              let applies_to of item['applies_to'] | arrayNull;
-              let i = index
-            "
-          >
-            <th scope="row">{{ i + 1 }}</th>
-            <th>{{ "applies to" | capatilizacion }}</th>
-            <th class="w-50">
-              <button
-                type="button"
-                class="btn btn-outline-primary"
-                (click)="setUrl(applies_to)"
-              >
-                click me
-              </button>
-            </th>
-          </tr>
-        </ng-container>
-        <!-- container of unit && container of structure && container of technology -->
-        <ng-container
-          *ngIf="
-            title === 'technology' || title === 'structure' || title === 'unit'
-          "
-        >
-          <!-- age* -->
-          <tr>
-            <th scope="row"></th>
-            <th>{{ "description" | capatilizacion }}</th>
-            <th class="w-50">{{ item["description"] | armor }}</th>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <th>{{ "age" | capatilizacion }}</th>
-            <th class="w-50">{{ item["age"] }}</th>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <th>{{ "cost" | capatilizacion }}</th>
-            <th class="w-50">{{ item["cost"] | json }}</th>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <th>{{ "build time" | capatilizacion }}</th>
-            <th class="w-50">{{ item["build_time"] }}</th>
-          </tr>
-        </ng-container>
-        <!-- container of unit && container of structure -->
-        <ng-container *ngIf="title === 'structure' || title === 'unit'">
-          <tr>
-            <th scope="row"></th>
-            <th>{{ "reload time" | capatilizacion }}</th>
-            <th class="w-50">{{ item["reload_time"] }}</th>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <th>{{ "line of sight" | capatilizacion }}</th>
-            <th class="w-50">{{ item["line_of_sight"] }}</th>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <th>{{ "hit points" | capatilizacion }}</th>
-            <th class="w-50">{{ item["hit_points"] }}</th>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <th>{{ "range" | capatilizacion }}</th>
-            <th class="w-50">{{ item["range"] | armor }}</th>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <th>{{ "attack" | capatilizacion }}</th>
-            <th class="w-50">{{ item["attack"] }}</th>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <th>{{ "armor" | capatilizacion }}</th>
-            <th class="w-50">{{ item["armor"] }}</th>
-          </tr>
-        </ng-container>
-      </tbody>
-    </table>
+            <!-- age* -->
+            <tr>
+              <th scope="row"></th>
+              <th>{{ "description" | capatilizacion }}</th>
+              <th class="w-50">{{ item["description"] | armor }}</th>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <th>{{ "age" | capatilizacion }}</th>
+              <th class="w-50">{{ item["age"] }}</th>
+            </tr>
+
+            <ng-container *ngIf="item['cost'].Wood"  >
+              <tr>
+                <th scope="row"></th>
+                <th>{{ "cost" | capatilizacion }}</th>
+                <th class="w-50"> Wood {{ item['cost'].Wood}}</th>
+              </tr>
+            </ng-container>
+
+            <ng-container *ngIf="item['cost'].Food"   >
+              <tr>
+                <th scope="row"></th>
+                <th>{{ "cost" | capatilizacion }}</th>
+                <th class="w-50"> Food  {{ item['cost'].Food }}</th>
+              </tr>
+            </ng-container>
+
+            <ng-container  *ngIf="item['cost'].Stone"  >
+              <tr>
+                <th scope="row"></th>
+                <th>{{ "cost" | capatilizacion }}</th>
+                <th class="w-50"> Stone {{ item['cost'].Stone }}</th>
+              </tr>
+            </ng-container>
+
+            <ng-container  *ngIf="item['cost'].Gold" >
+              <tr>
+                <th scope="row"></th>
+                <th>{{ "cost" | capatilizacion }}</th>
+                <th class="w-50"> Gold {{ item['cost'].Gold }}</th>
+              </tr>
+            </ng-container>
+
+            <tr>
+              <th scope="row"></th>
+              <th>{{ "build time" | capatilizacion }}</th>
+              <th class="w-50">{{ item["build_time"] }}</th>
+            </tr>
+          </ng-container>
+          <!-- container of unit && container of structure -->
+          <ng-container *ngIf="title === 'structure' || title === 'unit'">
+            <tr>
+              <th scope="row"></th>
+              <th>{{ "reload time" | capatilizacion }}</th>
+              <th class="w-50">{{ item["reload_time"] }}</th>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <th>{{ "line of sight" | capatilizacion }}</th>
+              <th class="w-50">{{ item["line_of_sight"] }}</th>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <th>{{ "hit points" | capatilizacion }}</th>
+              <th class="w-50">{{ item["hit_points"] }}</th>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <th>{{ "range" | capatilizacion }}</th>
+              <th class="w-50">{{ item["range"] | armor }}</th>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <th>{{ "attack" | capatilizacion }}</th>
+              <th class="w-50">{{ item["attack"] }}</th>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <th>{{ "armor" | capatilizacion }}</th>
+              <th class="w-50">{{ item["armor"] }}</th>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </cdk-virtual-scroll-viewport>
   </section>
 </main>
-<!-- </body>
-</html> -->
+<!-- </body> -->
+
+<!-- </html> -->

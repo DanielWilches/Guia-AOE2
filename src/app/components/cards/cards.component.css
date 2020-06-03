@@ -1,3 +1,23 @@
 .btn-outline-light {
     border: none;
 }
+.list-con {
+    height: 750px;
+    /* width: 100%; */
+    overflow-x: hidden;
+}
+/* cdk-virtual-scroll-viewport ::-webkit-scrollbar {
+    width: 7px;
+    background-color:black;
+}
+cdk-virtual-scroll-viewport ::-webkit-scrollbar-thumb {
+    background-color: tomato;
+} */
+.list-con::-webkit-scrollbar {
+    width: 5px;
+    background-color:transparent;
+}
+.list-con::-webkit-scrollbar-thumb {
+    background-color: tomato;
+    border-radius: 2px;
+}
