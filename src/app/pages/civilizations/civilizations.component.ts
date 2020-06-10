@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { ConexionService } from 'src/app/services/conexion.service';
+import { ConexionService } from '../../services/conexion.service';
 
 @Component({
   selector: 'app-civilizations',

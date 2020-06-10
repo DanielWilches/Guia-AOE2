@@ -30,6 +30,7 @@ import { TechnologiesComponent } from './pages/technologies/technologies.compone
 import { ObjetosOfArrayPipe } from './pipes/objetos-of-array.pipe';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
